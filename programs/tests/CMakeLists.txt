@@ -1,0 +1,30 @@
+cmake_minimum_required(VERSION 3.20)
+
+file(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
+
+message(STATUS "${CMAKE_CURRENT_SOURCE_DIR} : ")
+message(${files})
+
+foreach(file ${files})
+    get_filename_component(bfile ${file} NAME_WE)
+    add_executable(${bfile} ${bfile}.cpp)
+    install(TARGETS ${bfile} DESTINATION bin)
+endforeach()
+
+target_link_libraries(check_check CosmosCheck CosmosJson CosmosTime CosmosString)
+target_link_libraries(crctest CosmosString CosmosMath)
+target_link_libraries(filespeed)
+target_link_libraries(lsfittest CosmosMath)
+target_link_libraries(netspeed)
+target_link_libraries(netspeedd)
+target_link_libraries(serialPutData CosmosDeviceSerial)
+target_link_libraries(serialSendChar CosmosDeviceSerial)
+target_link_libraries(serial_setdtr CosmosDeviceSerial CosmosTime)
+target_link_libraries(string_test CosmosString)
+target_link_libraries(testdata)
+target_link_libraries(test_device_i2c CosmosDeviceI2C CosmosSupport)
+target_link_libraries(testmath1 CosmosMath)
+
+if(${BUILD_PROGRAMS_TESTS} MATCHES "YES")
+    add_subdirectory(unit_tests)
+endif()

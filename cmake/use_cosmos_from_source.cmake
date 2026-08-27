@@ -1,9 +1,16 @@
 if(NOT DEFINED COSMOS_KERNEL_INCLUDED)
 set(COSMOS_KERNEL_INCLUDED TRUE)
 
-include(${COSMOS_SOURCE}/thirdparty/cmake/use_cosmos_from_source.cmake)
+get_filename_component(COSMOS_SOURCE_KERNEL "${CMAKE_CURRENT_LIST_DIR}/.." ABSOLUTE)
 
-set(COSMOS_SOURCE_KERNEL ${COSMOS_SOURCE}/kernel)
+if(EXISTS "${COSMOS_SOURCE_KERNEL}/deps/thirdparty/cmake/use_cosmos_from_source.cmake")
+    include(${COSMOS_SOURCE_KERNEL}/deps/thirdparty/cmake/use_cosmos_from_source.cmake)
+elseif(DEFINED COSMOS_SOURCE)
+    include(${COSMOS_SOURCE}/thirdparty/cmake/use_cosmos_from_source.cmake)
+else()
+    message(FATAL_ERROR "Cannot find cosmosv5-thirdparty. Clone with --recurse-submodules or set COSMOS_SOURCE.")
+endif()
+
 message("Using COSMOS kernel from " ${COSMOS_SOURCE_KERNEL})
 
 set(CMAKE_CXX_STANDARD 11)

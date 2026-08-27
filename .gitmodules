@@ -1,3 +1,0 @@
-[submodule "deps/thirdparty"]
-	path = deps/thirdparty
-	url = https://github.com/hsfl/cosmosv5-thirdparty.git

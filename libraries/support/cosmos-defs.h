@@ -237,6 +237,8 @@ enum NODE_FLAG : uint16_t
 #define EVENT_TYPE_MOON 0x1280
 #define EVENT_TYPE_LAND 0x1210
 #define EVENT_TYPE_TIME 0x1220
+#define EVENT_TYPE_EARTH 0x1240
+#define EVENT_TYPE_MOON 0x1280
 
 //Ground Station Events
 #define EVENT_TYPE_GS 0x1400

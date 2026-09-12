@@ -9,12 +9,10 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Build json11 from kernel's bundled copy unless a higher-layer chain (e.g. micro-agent
-# pulling in thirdparty for localzlib) has already defined the json11 target.
-if(NOT TARGET json11)
-    add_subdirectory(${COSMOS_SOURCE_KERNEL}/libraries/json11 ${CMAKE_BINARY_DIR}/kernel/libraries/json11)
-    include_directories(${COSMOS_SOURCE_KERNEL}/libraries/json11)
-endif()
+# Build json11 from kernel's bundled copy.
+# json11 has been removed from thirdparty; kernel is now the canonical source.
+add_subdirectory(${COSMOS_SOURCE_KERNEL}/libraries/json11 ${CMAKE_BINARY_DIR}/kernel/libraries/json11)
+include_directories(${COSMOS_SOURCE_KERNEL}/libraries/json11)
 
 include_directories(${COSMOS_SOURCE_KERNEL}/libraries)
 

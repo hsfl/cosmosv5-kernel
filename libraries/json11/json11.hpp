@@ -68,6 +68,7 @@
 #include <map>
 #include <memory>
 #include <initializer_list>
+#include <cstdint>
 
 // These were previously provided by configCosmos.h; declared here for standalone use.
 using std::string;
